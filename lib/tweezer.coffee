@@ -4,6 +4,7 @@ http = require 'http'
 querystring = require 'querystring'
 
 twitter = require 'ntwitter'
+facebook = require 'fbgraph'
 
 validate = require './validate'
 
@@ -14,6 +15,9 @@ class Tweezer
 
     if validate.twitter @twitter
       @twit = new twitter @twitter
+
+    if validate.facebook @twitter
+      facebook.setAcessToken @facebook.accessToken
 
   tweet: (message, callback) =>
     unless validate.twitter @twitter
@@ -29,5 +33,13 @@ class Tweezer
 
         console.log "Tweeted #{message}"
         callback null, data
+
+  updateStatus: (token, message, callback) ->
+
+    graph.post(userId + "/feed", wallPost, function(err, res) {
+  // returns the post id
+  console.log(res); // { id: xxxxx}
+});
+
 
 module.exports = Tweezer
