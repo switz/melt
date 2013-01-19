@@ -16,9 +16,6 @@ class Tweezer
     if validate.twitter @twitter
       @twit = new twitter @twitter
 
-    if validate.facebook @twitter
-      facebook.setAcessToken @facebook.accessToken
-
   tweet: (message, callback) =>
     unless validate.twitter @twitter
       return callback 'Need four parameters'
@@ -35,11 +32,12 @@ class Tweezer
         callback null, data
 
   updateStatus: (token, message, callback) ->
+    facebook.setAccessToken token
+    facebook.post "saeWhat/feed", {message}, (err, res) ->
+      # returns the post id
+      console.log err, res
 
-    graph.post(userId + "/feed", wallPost, function(err, res) {
-  // returns the post id
-  console.log(res); // { id: xxxxx}
-});
-
+  get: (url, params, callback) ->
+    facebook.get url, params, callback
 
 module.exports = Tweezer
