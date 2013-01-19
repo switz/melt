@@ -23,8 +23,7 @@ class Tweezer
       return callback 'Message should be < 140'
 
     @twit
-      .verifyCredentials (err, data) ->
-        console.log 'verify', err, data
+      #.verifyCredentials (err, data) ->
       .updateStatus message, (err, data) ->
         return callback err if err
 

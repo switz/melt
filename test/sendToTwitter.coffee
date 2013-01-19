@@ -6,10 +6,11 @@ networks =
   twitter: config.twitter
 
 test 'send tweet', (t) ->
-  t.plan 1
+  t.plan 2
 
   tweezer = new Tweezer networks
+  message = "Won't #{Math.random()} step #{Math.random()} to #{Math.random()} freezer #{Math.random()}"
 
-  tweezer.tweet "Won't you step in to the freezer", (err, data) ->
-    console.log err, data
-    t.ok !err
+  tweezer.tweet message, (err, data) ->
+    t.equal data.text, message
+    t.equal data.user.screen_name, 'reba_hi'
