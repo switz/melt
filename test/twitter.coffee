@@ -1,15 +1,22 @@
 test = require 'tape'
-config = require './config'
+networks = require './config'
 Tweezer = require '../index'
 
-networks =
-  twitter: config.twitter
+validate = require '../lib/validate'
+
+tweezer = new Tweezer networks
+message = "Won't #{Math.random()} step #{Math.random()} to #{Math.random()} freezer #{Math.random()}"
+
+empty = {}
+
+test 'validate keys', (t) ->
+  t.plan 2
+
+  t.ok !validate.twitter empty
+  t.ok validate.twitter networks.twitter
 
 test 'send tweet', (t) ->
   t.plan 2
-
-  tweezer = new Tweezer networks
-  message = "Won't #{Math.random()} step #{Math.random()} to #{Math.random()} freezer #{Math.random()}"
 
   tweezer.tweet message, (err, data) ->
     t.equal data.text, message
