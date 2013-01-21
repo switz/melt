@@ -25,6 +25,6 @@
       console.log(data);
     });
 
-    tweezer.updateStatus message, function(err, data) {
+    tweezer.updateStatus(message, function(err, data) {
       console.log(data);
     });
