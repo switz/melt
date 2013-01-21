@@ -8,7 +8,7 @@ validate.twitter = (twitter) ->
   false
 
 validate.facebook = (facebook) ->
-  return true if facebook.accessToken
+  return true if facebook.access_token
   false
 
 module.exports = validate

@@ -2,6 +2,8 @@ test = require 'tape'
 config = require './config'
 Tweezer = require '../index'
 
+validate = require '../lib/validate'
+
 facebook = config.facebook
 
 networks =
@@ -10,27 +12,17 @@ networks =
 tweezer = new Tweezer networks
 message = "Won't #{Math.random()} step #{Math.random()} to #{Math.random()} freezer #{Math.random()}"
 
-testUserUrl = facebook.app_id + '/accounts/test-users'
-params =
-  installed: true
-  name: 'Reba'
-  permission: facebook.scope
-  method: 'post'
-  access_token: facebook.access_token
+empty = {}
 
-test 'get user', (t) ->
+test 'validate keys', (t) ->
   t.plan 2
 
-  tweezer.get testUserUrl, params, (err, user) ->
-    t.ok user.access_token
-    t.ok user.email
+  t.ok !validate.facebook empty
+  t.ok validate.facebook facebook
 
+test 'update status', (t) ->
+  t.plan 2
 
-    test 'update status', (t) ->
-      t.plan 2
-
-      tweezer.updateStatus user.access_token, message, (err, data) ->
-        console.log data
-        t.equal data.text, message
-        t.equal data.user.screen_name, 'reba_hi'
-
+  tweezer.updateStatus message, (err, data) ->
+    t.ok !err
+    t.ok data.id

@@ -16,12 +16,19 @@ class Tweezer
     if validate.twitter @twitter
       @twit = new twitter @twitter
 
+    if validate.facebook @facebook
+      @fb = facebook
+      # TODO: This only works with one facebook account for now
+      # I'll have to extend one of the fb API modules for it to work on
+      # multiple accounts
+      @fb.setAccessToken @facebook.access_token
+
   tweet: (message, callback) =>
     unless validate.twitter @twitter
-      return callback 'Need four parameters'
+      return callback 'Twitter: Need four parameters'
 
     if message.length > 140
-      return callback 'Message should be < 140'
+      return callback 'Twitter: Message should be < 140'
 
     @twit
       #.verifyCredentials (err, data) ->
@@ -31,9 +38,11 @@ class Tweezer
         console.log "Tweeted #{message}"
         callback null, data
 
-  updateStatus: (token, message, callback) ->
-    facebook.setAccessToken token
-    facebook.post "saeWhat/feed", {message}, (err, res) ->
+  updateStatus: (message, callback) ->
+    unless validate.facebook @facebook
+      return callback 'Facebook: Need access_token'
+
+    @fb.post "saeWhat/feed", {message}, (err, res) ->
       # returns the post id
       console.log err, res
 
