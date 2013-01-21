@@ -1,6 +1,3 @@
-http = require 'http'
-querystring = require 'querystring'
-
 twitter = require 'ntwitter'
 facebook = require 'fbgraph'
 
