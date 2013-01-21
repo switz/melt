@@ -1,5 +1,3 @@
-VERSION = '0.0.1'
-
 http = require 'http'
 querystring = require 'querystring'
 
