@@ -1,3 +1,4 @@
+#!/usr/bin/env coffee
 test = require 'tape'
 networks = require './config'
 Tweezer = require '../index'

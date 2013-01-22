@@ -1,5 +1,6 @@
+#!/usr/bin/env coffee
 test = require 'tape'
-networks = require './config'
+networks = require './config.json'
 Tweezer = require '../index'
 
 validate = require '../lib/validate'

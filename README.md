@@ -1,5 +1,6 @@
 #Tweezer
 
+[![build status](https://secure.travis-ci.org/switz/tweezer.png)](http://travis-ci.org/switz/tweezer)
 
 ## How to send a tweet + status update
 
