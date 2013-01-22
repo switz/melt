@@ -12,7 +12,7 @@
     "tape": "~0.2.2"
   },
   "scripts": {
-    "test": "tap test/*.coffee"
+    "test": "./node_modules/coffee-script/bin/coffee test/*.coffee"
   }
 }
 
