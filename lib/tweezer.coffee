@@ -27,20 +27,13 @@ class Tweezer
 
     @twit
       #.verifyCredentials (err, data) ->
-      .updateStatus message, (err, data) ->
-        return callback err if err
-
-        console.log "Tweeted #{message}"
-        callback null, data
+      .updateStatus message, callback
 
   updateStatus: (message, callback) ->
     unless validate.facebook @facebook
       return callback 'Facebook: Need access_token'
 
-    @fb.post "saeWhat/feed", {message}, (err, res) ->
-      # returns the post id
-      console.log err, res
-
+    @fb.post "saeWhat/feed", {message}, callback
   get: (url, params, callback) ->
     facebook.get url, params, callback
 
