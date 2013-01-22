@@ -1,9 +1,15 @@
 #!/usr/bin/env coffee
 test = require 'tape'
-networks = require './config'
 Tweezer = require '../index'
 
 validate = require '../lib/validate'
+
+networks =
+  facebook:
+    access_token: process.env.access_token1 + process.env.access_token2
+
+unless validate.facebook networks.facebook
+  networks = require './config.json'
 
 tweezer = new Tweezer networks
 message = "Won't #{Math.random()} step #{Math.random()} to #{Math.random()} freezer #{Math.random()}"
