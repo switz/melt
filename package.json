@@ -8,7 +8,7 @@
     "node-oauth": "git://github.com/ciaranj/node-oauth.git",
     "fbgraph": "~0.2.6"
   },
-  "dev-dependencies": {
+  "devDependencies": {
     "tape": "~0.2.2"
   },
   "scripts": {
