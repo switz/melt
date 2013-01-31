@@ -1,7 +1,7 @@
 {
-  "name": "tweezer",
+  "name": "melt",
   "description": "Dead Simple API to share to social networks",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "dependencies": {
     "coffee-script": ">=1.3.3",
     "ntwitter": "~0.5.0",
