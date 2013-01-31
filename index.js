@@ -1,2 +1,2 @@
 require('coffee-script');
-module.exports = require('./lib/tweezer');
+module.exports = require('./lib/melt');

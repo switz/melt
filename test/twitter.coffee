@@ -1,6 +1,6 @@
 #!/usr/bin/env coffee
 test = require 'tape'
-Tweezer = require '../index'
+Melt = require '../index'
 
 validate = require '../lib/validate'
 
@@ -14,7 +14,7 @@ networks =
 unless validate.twitter networks.twitter
   networks = require './config.json'
 
-tweezer = new Tweezer networks
+melt = new Melt networks
 message = "Won't #{Math.random()} step #{Math.random()} to #{Math.random()} freezer #{Math.random()}"
 
 empty = {}
@@ -28,6 +28,6 @@ test 'validate keys', (t) ->
 test 'send tweet', (t) ->
   t.plan 2
 
-  tweezer.tweet message, (err, data) ->
+  melt.tweet message, (err, data) ->
     t.equal data.text, message
     t.equal data.user.screen_name, 'reba_hi'

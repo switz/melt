@@ -37,4 +37,4 @@ class Melt
   get: (url, params, callback) ->
     facebook.get url, params, callback
 
-module.exports = Tweezer
+module.exports = Melt
