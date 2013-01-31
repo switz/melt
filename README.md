@@ -1,10 +1,10 @@
-#Tweezer
+#Melt
 
-[![build status](https://secure.travis-ci.org/switz/tweezer.png)](http://travis-ci.org/switz/tweezer)
+[![build status](https://secure.travis-ci.org/switz/melt.png)](http://travis-ci.org/switz/melt)
 
 ## How to send a tweet + status update
 
-    var Tweezer = require('tweezer');
+    var Melt = require('melt');
 
     var networks = {
       twitter: {
@@ -14,18 +14,18 @@
         access_token_secret: 'here'
       },
       facebook: {
-        access_token: 'access token'
+        token: 'access token'
       }
     }
 
-    var tweezer = new Tweezer(networks);
+    var melt = new Melt(networks);
 
-    var message = "Won't you step in to the freezer";
+    var message = "Split open and step into the freezer.";
 
-    tweezer.tweet(message, function(err, data) {
+    melt.tweet(message, function(err, data) {
       console.log(data);
     });
 
-    tweezer.updateStatus(message, function(err, data) {
+    melt.updateStatus(message, function(err, data) {
       console.log(data);
     });
